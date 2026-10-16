@@ -1,0 +1,8 @@
+# 作業の記録（スクリプトID・デプロイID・スプレッドシートID・開発用アカウントなどを含むため公開しない）
+progress.md
+
+# clasp の設定（スクリプトIDを含む）。見本は .clasp.json.example
+.clasp.json
+.clasprc.json
+
+node_modules/
