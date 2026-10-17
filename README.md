@@ -94,3 +94,4 @@ AI の答え方のテストは、GAS のエディタで `runTestQuestions` を�
 - [requirements.md](requirements.md)：ヒアリングと要件定義
 - [tech-selection.md](tech-selection.md)：技術選定と実装の方針
 - `LINE AI自動応答 ご提案書.pdf`、`別紙_詳しい資料.pdf`：オーナー様向けの提案書
+- [使い方マニュアル（PDF）](docs/LINE%20AI自動応答%20使い方マニュアル.pdf)：オーナー様向けの使い方。スマホで読みやすい Web ページ版は [docs/manual/index.html](docs/manual/index.html)（スプレッドシートのリンクと開発者の連絡先は架空です）

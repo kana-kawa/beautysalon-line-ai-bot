@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>LINE AI自動応答 使い方マニュアル</title>
+<style>
+  :root {
+    --text: #222;
+    --muted: #666;
+    --bg: #fff;
+    --soft: #f6f4f1;
+    --line: #e2ddd6;
+    --accent: #06c755;
+    --accent-dark: #04913d;
+    --note: #fff8e6;
+    --note-line: #f0d48a;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 0 16px 64px; }
+  header.top {
+    background: var(--accent);
+    color: #fff;
+    padding: 28px 16px 24px;
+  }
+  header.top div { max-width: 760px; margin: 0 auto; }
+  header.top h1 { margin: 0; font-size: 1.5rem; line-height: 1.4; }
+  header.top p { margin: 6px 0 0; font-size: .9rem; opacity: .95; }
+  h2 {
+    font-size: 1.3rem;
+    margin: 48px 0 12px;
+    padding: 6px 0 6px 12px;
+    border-left: 6px solid var(--accent);
+    line-height: 1.4;
+    scroll-margin-top: 12px;
+  }
+  h3 { font-size: 1.1rem; margin: 32px 0 8px; line-height: 1.5; scroll-margin-top: 12px; }
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 16px; padding-left: 1.5em; }
+  li { margin-bottom: 6px; }
+  strong { background: linear-gradient(transparent 60%, #ffe58a 60%); }
+  a { color: var(--accent-dark); word-break: break-all; }
+  .sub { font-weight: bold; margin: 20px 0 6px; }
+
+  nav.toc {
+    background: var(--soft);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 24px 0 8px;
+  }
+  nav.toc p { margin: 0 0 6px; font-weight: bold; }
+  nav.toc ol { margin: 0; }
+  nav.toc a { text-decoration: none; }
+
+  .note {
+    background: var(--note);
+    border: 1px solid var(--note-line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 0 0 16px;
+  }
+  .pdf {
+    display: block;
+    text-align: center;
+    margin: 16px 0 0;
+    font-size: .95rem;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin: 0 0 20px; font-size: .95rem; }
+  th, td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+  th { background: var(--soft); }
+
+  figure { margin: 8px 0 24px; }
+  figure a { display: block; }
+  figure img {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: block;
+  }
+  figcaption { font-size: .95rem; margin-bottom: 8px; }
+  .tap { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+
+  footer { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 16px; font-size: .95rem; }
+
+  /* スマホでは表をカードの形にする */
+  @media (max-width: 600px) {
+    table, thead, tbody, tr, th, td { display: block; }
+    thead { display: none; }
+    tr {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      padding: 10px 12px;
+      background: var(--soft);
+    }
+    td { border: none; padding: 2px 0 8px; }
+    td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: .8rem;
+      font-weight: bold;
+      color: var(--muted);
+    }
+    td:first-child { font-weight: bold; font-size: 1rem; }
+    td:first-child::before { display: none; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>LINE AI自動応答<br>使い方マニュアル</h1>
+    <p>オーナー様向け（2026年10月17日版）</p>
+  </div>
+</header>
+
+<main>
+<nav class="toc">
+  <p>もくじ</p>
+  <ol>
+    <li><a href="#hajimeni">はじめに</a></li>
+    <li><a href="#mail">メールが届いたら</a></li>
+    <li><a href="#shop">お店の情報を直す</a></li>
+    <li><a href="#calendar">臨時休業・営業時間の変更を知らせる</a></li>
+    <li><a href="#oshirase">お知らせを常連さんに送る</a></li>
+    <li><a href="#kiroku">記録と個人情報</a></li>
+    <li><a href="#komatta">困ったとき</a></li>
+  </ol>
+  <a class="pdf" href="../LINE%20AI%E8%87%AA%E5%8B%95%E5%BF%9C%E7%AD%94%20%E4%BD%BF%E3%81%84%E6%96%B9%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB.pdf">印刷用のPDFはこちら</a>
+</nav>
+
+<h2 id="hajimeni">はじめに</h2>
+<p>LINE公式アカウントに届いたお客様の質問には、AIが自動でお答えします。AIが答えられない質問だけ、オーナー様にメールでお知らせします。</p>
+<p>オーナー様にしていただくことは、次の4つです。</p>
+<table>
+  <thead><tr><th>いつ</th><th>すること</th><th>見るところ</th></tr></thead>
+  <tbody>
+    <tr><td>お知らせメールが届いたとき</td><td data-label="すること">LINEのチャット画面から、お客様に返信する</td><td data-label="見るところ"><a href="#mail">このマニュアルの「メールが届いたら」</a></td></tr>
+    <tr><td>メニュー・料金・営業時間などが変わったとき</td><td data-label="すること">「お店の情報」のスプレッドシートを直す</td><td data-label="見るところ"><a href="#shop">「お店の情報を直す」</a></td></tr>
+    <tr><td>臨時休業や営業時間の変更があるとき</td><td data-label="すること">スマホのGoogleカレンダーに予定を入れる</td><td data-label="見るところ"><a href="#calendar">「臨時休業・営業時間の変更を知らせる」</a></td></tr>
+    <tr><td>ときどき（月に1回ほど）</td><td data-label="すること">質問の記録を見て、AIが答えられなかった質問の答えを「よくある質問」に足す</td><td data-label="見るところ"><a href="#kiroku">「記録と個人情報」</a></td></tr>
+  </tbody>
+</table>
+<p>AIは「お店の情報」のスプレッドシートとカレンダーに書いてあることだけをもとに答えます。書いていないことは推測で答えず、オーナー様にお知らせします。</p>
+
+<h2 id="mail">メールが届いたら</h2>
+<p>件名が「【LINE】お客様への返信をお願いします（〇〇 様）」のメールが届いたら、LINEのチャット画面からお客様に返信してください。お客様には、AIがすでに「担当者からお返事いたします」と返しています。</p>
+<p>メールには次のことが書いてあります。</p>
+<ul>
+  <li>お客様のLINEの表示名</li>
+  <li>AIが答えられなかった理由（例：「明日の14時の予約の申し込み」）</li>
+  <li>お客様の質問と、AIがお客様に返した文</li>
+  <li>「AIの返信に戻す」リンク</li>
+</ul>
+<p>電話番号やメールアドレスは「＊＊＊」に置き換えてあります。全文はLINEのチャット画面で見られます。</p>
+
+<h3>返信のしかた</h3>
+<ol>
+  <li>スマホで「LINE公式アカウント」のアプリを開く（パソコンならメールのリンク <a href="https://chat.line.biz/">https://chat.line.biz/</a> を開く）</li>
+  <li>下の「チャット」を押す</li>
+  <li>メールに書いてある表示名のお客様を押す</li>
+  <li>いちばん下の入力欄に返信を書いて、送信する</li>
+</ol>
+
+<h3>AIが24時間止まります</h3>
+<p>オーナー様とお客様のやりとりに、AIが口をはさまないようにしています。メールが届いたお客様には、そのあと<strong>24時間、AIは返信しません</strong>。この間にお客様から届いたメッセージは、チャット画面でご確認ください。</p>
+<p>対応が終わって早めにAIに戻したいときは、次のようにします。</p>
+<ol>
+  <li>お知らせメールの「AIの返信に戻す」の下のリンクを押す</li>
+  <li>「〇〇 様への返信を、AIに戻しますか？」と出るので、お客様の名前を確かめて「AIの返信に戻す」ボタンを押す</li>
+  <li>「〇〇 様への返信を、AIに戻しました。」と出れば完了（「すでにAIの返信に戻っています」と出たときも、戻っています）</li>
+</ol>
+<p>24時間たてば、何もしなくてもAIの返信に戻ります。リンクを押すのは、早く戻したいときだけで構いません。</p>
+
+<h2 id="shop">お店の情報を直す</h2>
+<p>メニュー・料金・営業時間などが変わったら、「お店の情報」のスプレッドシートを直してください。直した内容は、次にお客様から質問が届いたときから、すぐにAIの答えに使われます（保存ボタンはありません。入力すると自動で保存されます）。</p>
+<p>スプレッドシートは、パソコンで開くと直しやすくなります。スマホなら「Googleスプレッドシート」のアプリでも直せます。</p>
+<p class="note">「お店の情報」のスプレッドシート：<a href="https://docs.google.com/spreadsheets/d/xxxxxxxx">https://docs.google.com/spreadsheets/d/xxxxxxxx</a><br>（架空のリンクです。お渡しするときに本物に差し替えます）</p>
+<table>
+  <thead><tr><th>下のタブ</th><th>書くこと</th><th>書き方の例</th></tr></thead>
+  <tbody>
+    <tr><td>基本情報</td><td data-label="書くこと">店名・住所・営業時間・定休日・駐車場・予約の方法・支払い方法など</td><td data-label="書き方の例">定休日：「毎週月曜日（祝日の場合は翌日の火曜日）」</td></tr>
+    <tr><td>メニュー</td><td data-label="書くこと">1行に1つのメニュー。カテゴリ、メニュー名、料金（税込）、所要時間の目安、説明</td><td data-label="書き方の例">カット｜大人カット｜4400｜60｜シャンプー・ブロー込み</td></tr>
+    <tr><td>よくある質問</td><td data-label="書くこと">お客様によく聞かれることと、その答え</td><td data-label="書き方の例">質問：「子ども連れでも大丈夫？」、回答：「はい。キッズスペースがあります」</td></tr>
+  </tbody>
+</table>
+
+<h3>書くときの注意</h3>
+<ul>
+  <li>料金は数字だけを書いてください（「4400」。「円」は自動で付きます）。所要時間も数字だけなら「分」が付きます</li>
+  <li>メニューをやめたら、その行ごと消してください。残っていると、AIがそのメニューを案内します</li>
+  <li>いちばん上の行（見出し）と、タブの名前は変えないでください。AIが情報を読めなくなります</li>
+  <li>このスプレッドシートには、お客様の名前や電話番号を書かないでください（書いたことは、AIを通してお客様に伝わることがあります）</li>
+  <li>「値引きはしていません」「学割はありません」のように、「できないこと」も書いておくと、AIが自分で答えられ、お知らせメールが減ります</li>
+</ul>
+<p>直すのが難しいときや、書き方に迷ったときは、開発者にご相談ください。</p>
+
+<h2 id="calendar">臨時休業・営業時間の変更を知らせる</h2>
+<p>臨時休業や「この日は17時まで」などは、スマホのGoogleカレンダーに予定を入れるだけで、AIがお客様にお伝えします。予定は、「お店のお知らせ（LINEのAIが読みます）」というカレンダーに入れてください。このカレンダーは、公開のときに開発者がオーナー様のGoogleアカウントに共有します。</p>
+<p>祝日は自動でわかるので、入れる必要はありません。</p>
+
+<h3>予定の入れ方（スマホのGoogleカレンダーのアプリ）</h3>
+<ol>
+  <li>右下の「＋」を押して、「予定」を押す</li>
+  <li>いちばん上の「タイトルを追加」に、「臨時休業」「17時まで営業」などを書く</li>
+  <li>一日中のこと（臨時休業など）なら「終日」をオンにする。何日も続くときは、終わりの日付も選ぶ</li>
+  <li>カレンダーの名前のところを押して、「お店のお知らせ（LINEのAIが読みます）」を選ぶ</li>
+  <li>お客様に伝えたいことがあれば、「説明を追加」に書く（例：「研修のためお休みします。翌日から通常どおり営業します。」）</li>
+  <li>右上の「保存」を押す</li>
+</ol>
+<p>やめるときは、その予定を消せば、AIもふだんの営業時間で答えるように戻ります。</p>
+
+<h3>注意</h3>
+<ul>
+  <li>AIは、<strong>今日から2週間先までの予定</strong>を読みます。それより先の予定も前もって入れておけますが、AIがお客様に伝えるのはその日2週間前からです</li>
+  <li>このカレンダーには、<strong>お客様の予約や名前などを入れないでください</strong>。入れた予定は、AIを通してほかのお客様に伝わることがあります。予約の管理には、別のカレンダーをお使いください</li>
+  <li>カレンダーが表示されないときは、アプリの左上の「≡」を押して、「お店のお知らせ（LINEのAIが読みます）」にチェックが入っているか確かめてください</li>
+</ul>
+
+<h2 id="oshirase">お知らせを常連さんに送る</h2>
+<p>月に1回のお知らせは、「常連」のタグを付けたお客様だけに送ります。LINEの無料プランで送れるのは<strong>月200通（届けた人数の合計）</strong>なので、友だち全員（約300人）には送れません。常連さん約100人に送れば、月100通で収まります。</p>
+<p>AIの自動返信は、この200通には数えません。</p>
+
+<h3>1. 常連さんに「常連」のタグを付ける（パソコンで）</h3>
+<p>最初に一度だけ、常連さんに1人ずつタグを付けます。そのあとは、新しい常連さんに足していくだけです。</p>
+
+<p class="sub">初めてのときだけ：「常連」のタグを作る</p>
+<ol>
+  <li>パソコンで LINE Official Account Manager（<a href="https://manager.line.biz/">https://manager.line.biz/</a>）を開き、左の「チャット」を押す</li>
+  <li>チャットの画面の左にある「チャット設定」を押し、その下に出る「タグ」を押す</li>
+  <li>右の緑の「＋作成」を押し、「常連」と入れて保存する</li>
+</ol>
+<figure>
+  <a href="images/01.png"><img src="images/01.png" alt="チャット設定の「タグ」と「＋作成」" loading="lazy"></a>
+  <div class="tap">画像を押すと大きく表示されます</div>
+</figure>
+<p>無料で作れるタグは5個までです。</p>
+
+<p class="sub">常連さんにタグを付ける</p>
+<ol>
+  <li>パソコンで LINE Official Account Manager（<a href="https://manager.line.biz/">https://manager.line.biz/</a>）を開き、左の「チャット」を押す</li>
+  <li>常連さんの名前を押して、チャットを開く</li>
+  <li>画面の右側にある「タグを追加」を押す（すでにほかのタグが付いているお客様は、「タグ」の横の鉛筆のマークを押す）</li>
+  <li>「タグを編集」の画面が開くので、「既存のタグ」から「常連」を選んで「保存」を押す（「常連」が一覧にないときは、まだタグを作っていません。この画面では作れないので、先に上の手順で作ってください）</li>
+</ol>
+<figure>
+  <figcaption>手順3：タグがまだないお客様は「＋タグを追加」を押します。</figcaption>
+  <a href="images/02.png"><img src="images/02.png" alt="右側の「＋タグを追加」" loading="lazy"></a>
+</figure>
+<figure>
+  <figcaption>手順3：すでにタグが付いているお客様は、タグの横の鉛筆のマークを押します。</figcaption>
+  <a href="images/03.png"><img src="images/03.png" alt="タグの横の鉛筆のマーク" loading="lazy"></a>
+</figure>
+<figure>
+  <figcaption>手順4：「既存のタグ」の「常連」を押してから、「保存」を押します。</figcaption>
+  <a href="images/04.png"><img src="images/04.png" alt="「タグを編集」の画面" loading="lazy"></a>
+</figure>
+<p>チャットの一覧に出てこない常連さんには、ご来店のときに「LINEで何か一言送ってください」とお願いすると、一覧に出るようになります。</p>
+
+<h3>2. 「常連」のオーディエンスを作る（最初の1回だけ・パソコンで）</h3>
+<p>「オーディエンス」は、お知らせを送る相手のグループです。パソコンの管理画面でしか作れません。</p>
+<ol>
+  <li>パソコンで <a href="https://manager.line.biz/">https://manager.line.biz/</a> を開き、お店のアカウントを選ぶ</li>
+  <li>左のメニューの「データ管理」の中の「オーディエンス」を押す（「データ管理」は、左のメニューを下にスクロールすると出てきます）</li>
+  <li>右上の緑の「作成」を押し、「オーディエンスタイプ」の「選択」を押して「チャットタグ」を選ぶ</li>
+  <li>「オーディエンス名」に「常連」と入れ、下の「ターゲット設定」の一覧で、「常連」の行の右にある「選択」を押して保存する（すでに同じタグでオーディエンスを作ってあると、「選択」は灰色で押せません。「選択できるタグはありません」と出るときは、まだタグを作っていません。先に上の「1.」でタグを作ってください）</li>
+</ol>
+<figure>
+  <figcaption>手順2・3：左の「データ管理」→「オーディエンス」を押し、右上の「作成」を押します。作ったあとは、この一覧に「常連」が出て、ステータスが「有効」になります。</figcaption>
+  <a href="images/05.png"><img src="images/05.png" alt="オーディエンスの一覧と「作成」" loading="lazy"></a>
+</figure>
+<figure>
+  <figcaption>手順3・4：「選択」でタイプを選び、「オーディエンス名」に「常連」と入れます。</figcaption>
+  <a href="images/06.png"><img src="images/06.png" alt="オーディエンスを作る画面" loading="lazy"></a>
+</figure>
+<figure>
+  <figcaption>手順3：「選択」を押すと、タイプを選ぶ画面が開きます。右下の「チャットタグ」を押します。</figcaption>
+  <a href="images/07.png"><img src="images/07.png" alt="オーディエンスタイプを選ぶ画面" loading="lazy"></a>
+</figure>
+<figure>
+  <figcaption>手順4：名前を入れ、下の「ターゲット設定」で「常連」の行の「選択」を押します（画像では、名前を「チャットタグ常連」にしています。「常連」だけで構いません）。</figcaption>
+  <a href="images/08.png"><img src="images/08.png" alt="ターゲット設定でタグを選ぶ" loading="lazy"></a>
+</figure>
+<figure>
+  <figcaption>「選択」が「タグを変更」に変わったら、下の「保存」を押します。</figcaption>
+  <a href="images/09.png"><img src="images/09.png" alt="「保存」を押す" loading="lazy"></a>
+</figure>
+<p>作ったばかりのときは、一覧のステータスが「準備中」です。しばらくすると「有効」になり、お知らせの配信先に使えるようになります。</p>
+<p>チャットタグのオーディエンスは、タグを付けたお客様が<strong>1人からでも</strong>作れて、お知らせを送れます（テスト用のアカウントで、1人に届くことを確かめました）。</p>
+
+<h3>3. お知らせを送る（毎月・パソコンで）</h3>
+<ol>
+  <li><a href="https://manager.line.biz/">https://manager.line.biz/</a> の「メッセージ配信」→「メッセージを作成」を押す</li>
+  <li>「配信先」で「絞り込み」を選び、「オーディエンス」の鉛筆のマークを押す。一覧の「常連」の「含める」を押して、「追加」を押す</li>
+  <li>右の「ターゲット推計」の人数が、その月に送れる残りの通数より少ないかを確かめる（下の「高度な設定」はチェックしないままで構いません）</li>
+  <li>お知らせの文を書いて、「配信」を押す</li>
+</ol>
+<figure>
+  <figcaption>手順2：「絞り込み」を選び、「オーディエンス」の鉛筆のマークを押します。下のピンクの「属性で絞り込むには、…100人以上必要です」は、使わないので気にしなくて大丈夫です。</figcaption>
+  <a href="images/10.png"><img src="images/10.png" alt="「絞り込み」と鉛筆のマーク" loading="lazy"></a>
+</figure>
+<figure>
+  <figcaption>手順2：開いた一覧で、「常連」の行の「含める」を押してから、「追加」を押します。</figcaption>
+  <a href="images/11.png"><img src="images/11.png" alt="オーディエンスを選ぶ画面" loading="lazy"></a>
+</figure>
+<figure>
+  <figcaption>「含める」とオーディエンスの名前が出て、右の「ターゲット推計」に送る人数の目安が出れば大丈夫です。</figcaption>
+  <a href="images/12.png"><img src="images/12.png" alt="配信先を選んだあとの画面" loading="lazy"></a>
+</figure>
+
+<h3>注意</h3>
+<ul>
+  <li>その月に送れる残りの通数は、管理画面の右上で確かめられます。臨時のお知らせをもう1回送るときは、残りを確かめてから送ってください</li>
+  <li>画面のボタンの名前は、LINEの更新で変わることがあります。見つからないときは開発者にご相談ください</li>
+  <li>常連さんが200人に近づいたら、有料のライトプラン（月約5,000通まで送れる）を考える時期です</li>
+</ul>
+
+<h2 id="kiroku">記録と個人情報</h2>
+<p>お客様の質問とAIの答えは、「記録（お客様の情報あり・共有しない）」のスプレッドシートに残り、<strong>6か月で自動で消えます</strong>。月に1回ほど見て、AIが答えられなかった質問の答えを「よくある質問」に足すと、AIが答えられることが増えていきます。</p>
+<p class="note">「記録」のスプレッドシート：<a href="https://docs.google.com/spreadsheets/d/yyyyyyyy">https://docs.google.com/spreadsheets/d/yyyyyyyy</a><br>（架空のリンクです。お渡しするときに本物に差し替えます）</p>
+<table>
+  <thead><tr><th>下のタブ</th><th>入っているもの</th><th>消えるとき</th></tr></thead>
+  <tbody>
+    <tr><td>質問の記録</td><td data-label="入っているもの">日時、質問、AIの答え、オーナー様に回したか、その理由。お客様の名前は入りません</td><td data-label="消えるとき">6か月たったら自動で</td></tr>
+    <tr><td>AIを止めているお客様</td><td data-label="入っているもの">オーナー様が対応中のお客様（LINEのID、表示名）</td><td data-label="消えるとき">AIの返信に戻ったら自動で</td></tr>
+  </tbody>
+</table>
+<p>「AIを止めているお客様」の行を消しても、そのお客様はAIの返信に戻ります。メールのリンクが使えないときは、この方法でも構いません。</p>
+
+<h3>守っていただきたいこと</h3>
+<ul>
+  <li>「記録」のスプレッドシートは、<strong>スタッフさんを含め、ほかの人に共有しないでください</strong>（見られるのはオーナー様と、保守の契約中の開発者だけです）。「お店の情報」のほうは、スタッフさんに共有しても構いません</li>
+  <li>「リンクを知っている全員」での共有は、どのスプレッドシートもオンにしないでください</li>
+  <li>お店のGoogleアカウントは、2段階認証をオンのままにしてください</li>
+  <li>お客様から「自分の記録を消してほしい」と言われたときは、開発者にご連絡ください</li>
+</ul>
+<p>お客様の質問は、答えを作るためにAIの会社（Anthropic社）に送られます。そのとき、名前とLINEのIDは送らず、電話番号やメールアドレスは「＊＊＊」に置き換えています。</p>
+
+<h2 id="komatta">困ったとき</h2>
+<p>しくみは毎朝自動で点検していて、止まったときは開発者にメールが届きます。次の表で解決しないときは、開発者にご連絡ください。</p>
+<table>
+  <thead><tr><th>こんなとき</th><th>確かめること</th></tr></thead>
+  <tbody>
+    <tr><td>AIが返信しないお客様がいる</td><td data-label="確かめること">「記録」の「AIを止めているお客様」にそのお客様がいれば、止めている間です。行を消すと戻ります</td></tr>
+    <tr><td>どのお客様にもAIが返信しない</td><td data-label="確かめること">開発者にご連絡ください</td></tr>
+    <tr><td>お客様に「担当者から返信いたします」とだけ返っている</td><td data-label="確かめること">AIが一時的に使えないときの代わりの返信です。お知らせメールも届くので、チャット画面から返信してください</td></tr>
+    <tr><td>AIが間違った答えをした</td><td data-label="確かめること">「お店の情報」に正しいことが書いてあるか確かめ、直してください。お客様にはチャット画面から訂正をお送りください。書いてあるのに間違うときは、開発者にご連絡ください</td></tr>
+    <tr><td>臨時休業を伝えてくれない</td><td data-label="確かめること">予定が「お店のお知らせ（LINEのAIが読みます）」のカレンダーに入っているか、その日が2週間より先でないかを確かめてください</td></tr>
+    <tr><td>お知らせメールが届かない</td><td data-label="確かめること">迷惑メールのフォルダーを確かめてください。届いていたら「迷惑メールではない」を押してください</td></tr>
+  </tbody>
+</table>
+
+<footer>
+  <p>開発者の連絡先：開発 太郎（メール：developer@example.com）<br>※架空の連絡先です</p>
+</footer>
+</main>
+</body>
+</html>
