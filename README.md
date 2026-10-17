@@ -73,6 +73,8 @@ tests/
 
 ## 動かし方
 
+ここでは流れだけを書いています。アカウントの準備、LINE の設定、本番への移し方を含めた詳しい手順は [docs/SETUP.md](docs/SETUP.md) にあります。
+
 1. [clasp](https://github.com/google/clasp) をインストールしてログインし、Apps Script のプロジェクトを作る。`.clasp.json.example` を `.clasp.json` に写して、スクリプト ID を入れる
 2. `clasp push` でコードを送り、ウェブアプリとしてデプロイする
 3. GAS のエディタで、`src/Setup.js` の先頭に書いた順に初回の関数を実行する（Webhook の秘密の文字列、LINE のトークン、スプレッドシート、カレンダー、毎朝のトリガー）
